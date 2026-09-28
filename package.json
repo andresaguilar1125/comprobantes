@@ -1,0 +1,37 @@
+{
+  "name": "comprobantes",
+  "version": "1.0.0",
+  "description": "Generador de comprobantes de pago semanales (Costa Rica)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev:secure": "HTTPS_DEV=true vite dev --port 5173"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresaguilar1125/comprobantes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresaguilar1125/comprobantes/issues"
+  },
+  "homepage": "https://github.com/andresaguilar1125/comprobantes#readme",
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@vite-pwa/sveltekit": "^1.1.0",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "svelte": "^5.57.1",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2",
+    "workbox-window": "^7.4.1"
+  }
+}
