@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================================
+  PLANTILLA DEL COMPROBANTE — DOCUMENTO DE REFERENCIA
+  ============================================================================
+
+  Este archivo documenta los valores con que se dibuja el comprobante: textos
+  fijos, tamaños de letra y separaciones.
+
+  IMPORTANTE: este archivo NO lo lee la aplicación. Sirve como referencia para
+  saber qué valor cambiar y dónde. Los valores vivos (los que realmente se usan)
+  están en:
+
+      src/lib/image/drawReceipt.js
+
+  Ahí están las mismas constantes, con los mismos nombres que aquí. Cuando quiera
+  cambiar algo, busque el nombre en ese archivo y edítelo.
+
+  Si más adelante quiere que este XML mande de verdad (que la aplicación lo lea
+  al dibujar), avise: hay que agregar un lector, porque el navegador necesita
+  analizarlo en tiempo de ejecución y no durante la compilación.
+  ============================================================================
+-->
+<receipt>
+
+  <!-- Título grande, arriba del todo. Se imprime en negrita.
+       En drawReceipt.js: drawReceipt() -> fillText('COMPROBANTE PAGO SEMANAL') -->
+  <title>COMPROBANTE PAGO SEMANAL</title>
+
+  <!-- Textos fijos, en el orden en que aparecen.
+       En drawReceipt.js: las llamadas a pair() dentro de drawReceipt() -->
+  <labels>
+    <employee>A nombre de</employee>
+    <id>Identificacion</id>
+    <weekly>Salario Semanal</weekly>
+    <!-- Rótulo de la nota opcional. Solo se imprime cuando hay una nota escrita. -->
+    <note>Nota</note>
+    <total>Monto Total</total>
+    <signature>Firma de recibido</signature>
+  </labels>
+
+  <!-- El título de cada feriado NO está aquí: se arma en
+       src/lib/domain/payroll.js como "Feriado - <nombre>", porque necesita
+       incluir el nombre del feriado. -->
+
+  <!-- Tamaños de letra, en píxeles lógicos.
+       En drawReceipt.js: las constantes HEADING_1, HEADING_2 y BODY.
+       La imagen se dibuja al doble (ver <scale>), así que no hace falta
+       agrandarlas para imprimir. -->
+  <font>
+    <title>31</title>
+    <total>26</total>
+    <body>19</body>
+  </font>
+
+  <!-- Lienzo.
+       En drawReceipt.js: WIDTH, PAD y SCALE. -->
+  <canvas>
+    <!-- Ancho total de la imagen lógica. -->
+    <width>700</width>
+    <!-- Margen a cada lado. -->
+    <padding>40</padding>
+    <!-- Factor de nitidez: 2 dibuja al doble de resolución. -->
+    <scale>2</scale>
+  </canvas>
+
+  <!-- Posiciones verticales, en píxeles desde el borde de arriba.
+       En drawReceipt.js: dentro de computeLayout().
+
+       rowStep es la distancia entre filas. Cada feriado ocupa una fila y la nota
+       ocupa una más, así que al aumentar rowStep el comprobante se hace más alto.
+       El alto total se calcula solo; no hay un valor de alto fijo. -->
+  <spacing>
+    <titleY>34</titleY>
+    <stampY>62</stampY>
+    <headerRuleY>84</headerRuleY>
+    <weekY>120</weekY>
+    <officeY>148</officeY>
+    <rowsTop>190</rowsTop>
+    <rowStep>42</rowStep>
+    <ruleGap>40</ruleGap>
+    <totalGap>46</totalGap>
+    <signatureGap>34</signatureGap>
+    <signatureHeight>78</signatureHeight>
+    <signatureRuleGap>14</signatureRuleGap>
+    <signatureCaptionGap>26</signatureCaptionGap>
+    <footerGap>18</footerGap>
+  </spacing>
+
+  <!-- Grosor de las líneas horizontales.
+       En drawReceipt.js: el parámetro `width` de rule(), y la llamada
+       rule(ctx, layout.totalRuleY, 2.5). -->
+  <rules>
+    <header>2</header>
+    <total>2.5</total>
+  </rules>
+
+</receipt>
