@@ -1,0 +1,27 @@
+[
+	{
+		"year": 2026,
+		"dates": [
+			"01-01",
+			"04-02",
+			"04-03",
+			"04-11",
+			"05-01",
+			"07-25",
+			"08-15",
+			"09-15",
+			"12-25"
+		],
+		"labels": {
+			"01-01": "Año Nuevo",
+			"04-02": "Jueves Santo",
+			"04-03": "Viernes Santo",
+			"04-11": "Día de Juan Santamaría",
+			"05-01": "Día Internacional del Trabajo",
+			"07-25": "Anexión del Partido de Nicoya",
+			"08-15": "Día de la Madre",
+			"09-15": "Día de la Independencia",
+			"12-25": "Navidad"
+		}
+	}
+]
