@@ -134,7 +134,8 @@ valor con su nombre, como referencia.
 
 ## Desarrollo
 
-Requiere Node 20 o superior.
+Requiere Node 20 o superior. La integración continua usa **Node 24**, así que
+conviene desarrollar con esa versión para que no haya sorpresas.
 
 ```bash
 npm install
@@ -270,8 +271,40 @@ El flujo de trabajo en [`.github/workflows/deploy.yml`](.github/workflows/deploy
 ejecuta las pruebas, compila con `BASE_PATH` y publica en GitHub Pages en cada push a
 `main`.
 
+Los *actions* están en sus versiones que corren sobre **Node 24**. Las anteriores
+(`checkout@v4`, `setup-node@v4`, `upload-pages-artifact@v3`, `deploy-pages@v4`) corrían
+sobre Node 20, que GitHub ya marcó obsoleto.
+
+### Habilitar Pages una sola vez
+
 Antes del primer despliegue, en el repositorio: **Settings → Pages → Source: GitHub
-Actions**.
+Actions**. Sin esto, el trabajo `build_site` pasa pero `deploy` falla con
+`Failed to create deployment (status: 404)`.
+
+También se puede hacer desde la línea de comandos:
+
+```bash
+gh api -X POST repos/<usuario>/<repo>/pages -f build_type=workflow
+```
+
+### Si un despliegue falla
+
+| Síntoma | Causa | Solución |
+| --- | --- | --- |
+| `Failed to create deployment (status: 404)` | Pages no está habilitado | Habilitarlo (ver arriba) |
+| `push declined due to email privacy restrictions` (GH007) | El correo de los commits está marcado como privado en GitHub | Usar el alias `…@users.noreply.github.com`, o hacer público el correo |
+| El sitio carga pero sin estilos ni JS | `BASE_PATH` no coincide con el nombre del repo | Verificar que `BASE_PATH` sea `/<nombre-del-repo>` |
+| El sitio carga vacío la primera vez | El service worker todavía se está instalando | Recargar; en la segunda visita ya está en caché |
+| Falla en `Run tests` | Alguna prueba no pasa | Correr `npm test` en local |
+
+Ver el detalle de una corrida:
+
+```bash
+gh run list --limit 5
+gh run view <id>
+gh run watch <id> --exit-status     # seguirla hasta el final
+gh run rerun <id> --failed          # repetir solo lo que falló
+```
 
 ---
 
