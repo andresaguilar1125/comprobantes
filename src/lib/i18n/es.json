@@ -1,0 +1,56 @@
+{
+	"app": {
+		"title": "Comprobante de pago",
+		"subtitle": "Genere y comparta el comprobante de la semana.",
+		"settingsLink": "Configuración"
+	},
+	"form": {
+		"weekLabel": "Semana de pago",
+		"weekHelp": "Elija el sábado en que se realiza el pago.",
+		"noteLabel": "Nota (opcional)",
+		"notePlaceholder": "EFECTIVO, SINPE, ADELANTO PARCIAL AGUINALDO…",
+		"noteHelp": "Se imprime en mayúsculas, entre los feriados y el total. Se borra al cambiar de semana.",
+		"holidayMark": "feriado de pago obligatorio",
+		"prevMonth": "Mes anterior",
+		"nextMonth": "Mes siguiente",
+		"previewTitle": "Vista previa del comprobante",
+		"previewHint": "Así se verá la imagen que comparte.",
+		"previewLoading": "Generando vista previa…"
+	},
+	"holiday": {
+		"noticeSingular": "Esta semana contiene un feriado de pago obligatorio. Se aplicó el pago extra.",
+		"noticePlural": "Esta semana contiene {count} feriados de pago obligatorio. Se aplicó el pago extra por cada uno.",
+		"included": "Feriados incluidos en la semana",
+		"sundaySkipped": "El feriado {label} cae domingo, que es día de descanso, por lo que no se paga adicional."
+	},
+	"actions": {
+		"share": "Compartir",
+		"download": "Descargar imagen",
+		"downloadedFallback": "Su navegador no puede compartir archivos directamente. La imagen se descargó en su dispositivo.",
+		"generating": "Generando…",
+		"goToSettings": "Ir a configuración"
+	},
+	"blocked": {
+		"missingEmployee": "Antes de continuar, complete el nombre y la cédula en Configuración.",
+		"renderFailed": "No se pudo generar la imagen del comprobante. Intente de nuevo.",
+		"generic": "Complete la configuración para poder generar el comprobante."
+	},
+	"settings": {
+		"title": "Configuración",
+		"back": "Volver",
+		"employeeSection": "Datos de la persona trabajadora",
+		"name": "Nombre completo",
+		"id": "Número de cédula",
+		"office": "Oficio o descripción del puesto",
+		"paySection": "Datos de pago",
+		"weeklySalary": "Salario semanal (colones)",
+		"holidayRate": "Monto por día feriado (colones)",
+		"signatureSection": "Firma",
+		"signatureBundled": "El comprobante se firma con la imagen que viene incluida en la aplicación. No hay que subir nada.",
+		"save": "Guardar",
+		"restore": "Restaurar valores originales",
+		"saved": "Cambios guardados.",
+		"restored": "Se restauraron los valores originales.",
+		"localOnly": "Los datos se guardan únicamente en este dispositivo."
+	}
+}
